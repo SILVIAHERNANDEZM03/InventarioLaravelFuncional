@@ -1,0 +1,11 @@
+create view vista_Stock as SELECT 
+s.idstock, pr.nombre, pr.descripcion, s.cantidad as existencias, s.disponible as stock, s.ultimoIngreso
+from productos as pr
+INNER JOIN stock as s on s.idstock = pr.idStock
+
+
+create view vista_salidas as SELECT 
+s.idsalidas,pr.idproductos, pr.descripcion, pr.precio, s.cantidad  
+from salidas as s
+INNER JOIN productos as pr on pr.idproductos = s.idproductos
+INNER JOIN stock as st on st.idstock = pr.idStock
